@@ -1,13 +1,15 @@
-let n=16
+let arr = [1, 2, 3, 6, 2, 7,7];
 
-function power(n){
-    if(n==1)
-        return true
-    else if(n<0|| n%2!=0){
-        return false
-    }
+let secondLargest = arr[0];
+let largest = arr[0];
 
-    return power(n/2)
+for (let i = 0; i < arr.length; i++) {
+  if (arr[i] > largest) {
+    secondLargest = largest;
+    largest = arr[i];
+  } else if (arr[i] > secondLargest && arr[i] != largest) {
+    secondLargest = arr[i];
+  }
 }
 
-console.log(power(n))
+console.log(secondLargest);
