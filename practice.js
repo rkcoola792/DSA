@@ -1,14 +1,24 @@
+let s = "()[]{}";
+function validParenthesis() {
+  let map = {
+    "(": ")",
+    "[": "]",
+    "{": "}",
+  };
 
-console.log("true");
+  let stack = [];
 
-let haystack = "sadbutsad"
-let needle = "sad"
-
-let n=needle.length;
-
-for (let i=0;i<haystack.length-n;i++){
-    if(haystack.substring(i,i+n)===needle){
-       console.log(i)
-        return ;
+  for (let i = 0; i < s.length; i++) {
+    if (map[s[i]]) {
+      stack.push(s[i]);
+    } else {
+      let top = stack.pop();
+      if (!top || s[i] != map[top]) {
+        return false;
+      }
     }
 }
+return stack.length ==0;
+}
+
+console.log(validParenthesis());
